@@ -75,4 +75,18 @@ public class Post extends SubmittedContent{
     }
   }
 
+  public void update(String text){
+    try(Connection con=DB.sql2o.open()){
+      String sql = "UPDATE submitted_content SET text = :text;";
+      con.createQuery(sql)
+      .addParameter("text", text)
+      .executeUpdate();
+    }
+  }
+
+  //delete comments of this post
+
+
+
+
 }

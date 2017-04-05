@@ -61,6 +61,19 @@ public class PostTest {
     assertTrue (Post.getAllPosts().size()==1);
   }
 
+  @Test
+  public void updatePost_Best() {
+    Post newPost = new Post("Better Times");
+    newPost.save();
+    newPost.update("Best Times");
+    assertEquals("Best Times", Post.find(newPost.getId()).getContent());
+  }
+
+  //delete comments of this post
+
+
+
+
 
 
 
