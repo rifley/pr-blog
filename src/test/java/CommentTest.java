@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+
 
 public class CommentTest {
 
@@ -33,13 +35,20 @@ public class CommentTest {
     assertTrue (Comment.getAllComments().size()==1);
   }
 
-  // @Test
-  // public void savedCommentTimeStampisaccurate_true(){
-  //   Comment newComment = new Comment("Better Times");
-  //   newComment.save();
-  //   Timestamp timeNow = new Timestamp(new Date().getTime());
-  //   assertEquals (DateFormat.getDateTimeInstance().format(newComment.getSubmittedTime()), DateFormat.getDateTimeInstance().format(timeNow.getTime()));
-  // }
+  @Test
+  public void commentIDgreaterthan1() {
+    Comment newComment = new Comment("Better Times", 1);
+    newComment.save();
+    assertTrue (newComment.getId()>0);
+  }
+
+  @Test
+  public void savedCommentTimeStampisaccurate_true(){
+    Comment newComment = new Comment("Better Times",1);
+    newComment.save();
+    Timestamp timeNow = new Timestamp(new Date().getTime());
+    assertEquals (DateFormat.getDateTimeInstance().format(newComment.getSubmittedTime()), DateFormat.getDateTimeInstance().format(timeNow.getTime()));
+  }
 
   // @Test
   // public void findComment_true() {
