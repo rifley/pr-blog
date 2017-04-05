@@ -7,10 +7,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class Post extends SubmittedContent{
+public abstract class SubmittedContent {
+public String userContent;
+public int user_Id;
+public Timestamp post_Time;
 
-  public Post(String content) {
-    userContent = content;
+
+  public String getContent() {
+    return userContent;
   }
 
 }
