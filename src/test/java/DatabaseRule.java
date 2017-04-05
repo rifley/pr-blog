@@ -13,9 +13,7 @@ public class DatabaseRule extends ExternalResource {
     try(Connection con = DB.sql2o.open()) {
       // String deleteTagQuery = "DELETE FROM tags *;";
       // con.createQuery(deleteTagQuery).executeUpdate();
-      // String deleteCommentQuery = "DELETE FROM comments *;";
-      // con.createQuery(deleteCommentQuery).executeUpdate();
-      String deletePostQuery = "DELETE FROM posts *;";
+      String deletePostQuery = "DELETE FROM submitted_content *;";
       con.createQuery(deletePostQuery).executeUpdate();
       String deleteUserQuery = "DELETE FROM users *;";
       con.createQuery(deleteUserQuery).executeUpdate();

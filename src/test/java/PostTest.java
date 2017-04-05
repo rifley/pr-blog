@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 
 public class PostTest {
 
@@ -25,5 +26,42 @@ public class PostTest {
     Post newPost = new Post("Better Times");
     assertEquals("Better Times", newPost.getContent());
   }
+
+  @Test
+  public void createPostAndSaveIt_size1() {
+    Post newPost = new Post("Better Times");
+    newPost.save();
+    assertTrue (Post.getAllPosts().size()==1);
+  }
+
+  @Test
+  public void savedPostTimeStampisaccurate_true(){
+    Post newPost = new Post("Better Times");
+    newPost.save();
+    Timestamp timeNow = new Timestamp(new Date().getTime());
+    assertEquals (DateFormat.getDateTimeInstance().format(newPost.getSubmittedTime()), DateFormat.getDateTimeInstance().format(timeNow.getTime()));
+  }
+
+  @Test
+  public void findPost_true() {
+    Post newPost = new Post("Better Times");
+    newPost.save();
+    Post newPost2 = new Post("Best Of Times");
+    newPost2.save();
+    assertTrue (newPost2.equals(Post.find(newPost2.getId())));
+  }
+
+  @Test
+  public void deletePost_sizeis1() {
+    Post newPost = new Post("Better Times");
+    newPost.save();
+    Post newPost2 = new Post("Best Of Times");
+    newPost2.save();
+    newPost.delete();
+    assertTrue (Post.getAllPosts().size()==1);
+  }
+
+
+
 
 }

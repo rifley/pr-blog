@@ -8,13 +8,22 @@ import java.util.TimerTask;
 import java.sql.Timestamp;
 
 public abstract class SubmittedContent {
-public String userContent;
+public String text;
 public int user_Id;
-public Timestamp post_Time;
-
+public Timestamp submitted_time;
+public int id;
 
   public String getContent() {
-    return userContent;
+    return text;
   }
+  public Timestamp getSubmittedTime(){
+    return submitted_time;
+  }
+
+  public int getId (){
+    return id;
+  }
+
+  
 
 }
